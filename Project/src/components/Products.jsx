@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Layout from "./Layout";
+import { useDispatch } from "react-redux";
+import { add } from "../Store/cartSlice";
 
 function Products() {
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // Fetch data from API
@@ -21,27 +24,7 @@ function Products() {
     fetchProducts();
   }, []);
 
-  return (
-    <>
-      <Layout>
-        <h1 className="text-center text-5xl font-bold m-5">Products Dashboard</h1>
-        {products.length === 0 ? (
-          <div className="text-center my-20 text-5xl ">Loading...</div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        )}
-      </Layout>
-    </>
-  );
-}
-
-export default Products;
-
-// Render products
+  // Render products
 const ProductCard = ({ product }) => (
   <div className="max-w-sm rounded overflow-hidden shadow-lg p-6 bg-white">
     <img
@@ -62,10 +45,39 @@ const ProductCard = ({ product }) => (
             ({product.rating.count} reviews)
           </span>
         </div>
-        <button className="bg-blue-500 text-white font-bold py-2 px-4 mx-auto mt-3 rounded hover:bg-blue-700">
+        <button
+         onClick={() => addToCart(product)}
+         className="bg-blue-500 text-white font-bold py-2 px-4 mx-auto mt-3 rounded hover:bg-blue-700">
           Add to Cart
         </button>
       </div>
     </div>
   </div>
 );
+
+  //addtocard
+  const addToCart = (product) => {
+    dispatch(add(product));
+  };
+
+  return (
+    <>
+      <Layout>
+        <h1 className="text-center text-5xl font-bold m-5 pt-20">Products Dashboard</h1>
+        {products.length === 0 ? (
+          <div className="text-center my-20 text-5xl ">Loading...</div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+            {products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
+      </Layout>
+    </>
+  );
+}
+
+export default Products;
+
+

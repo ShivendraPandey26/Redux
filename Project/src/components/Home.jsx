@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from './Layout';
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
@@ -13,12 +14,12 @@ function Home() {
               Your one-stop solution for all your product needs. Explore our wide range of products and find what you love!
             </p>
             <div className="mt-8">
-              <a
-                href="/products"
+              <Link
+                to="/products"
                 className="bg-blue-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700"
               >
                 Shop Now
-              </a>
+              </Link>
             </div>
           </section>
 
