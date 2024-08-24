@@ -1,0 +1,20 @@
+#todo-list {
+    display: grid;
+    place-content: center;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+    width: 50rem;
+}
+
+.remove-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 1rem;
+}
