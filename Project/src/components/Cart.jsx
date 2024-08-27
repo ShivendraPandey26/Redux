@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from './Layout';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -64,12 +65,13 @@ const Cart = () => {
             {/* Checkout Button */}
             {cartItems.length > 0 && (
               <div className="mt-8 text-right">
-                <a
-                href='/'
+                <Link
+                to={'/checkout'}
                   className="bg-blue-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700"
+                  onClick={() => (dispatch(cartItems = null))}
                 >
                   Proceed to Checkout
-                </a>
+                </Link>
               </div>
             )}
           </div>
