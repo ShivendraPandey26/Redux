@@ -1,10 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function ProductCard() {
-  return (
-    <>
-    // Render products
-  const ProductCard = ({ product }) => (
+const ProductCard = ({ product }) => (
+  <>
     <div className="max-w-sm rounded overflow-hidden shadow-lg p-6 bg-white">
       <img
         className="w-full h-48 object-cover"
@@ -34,8 +31,7 @@ function ProductCard() {
         </div>
       </div>
     </div>
-    </>
-  )
-}
+  </>
+);
 
-export default ProductCard
+export default ProductCard;
